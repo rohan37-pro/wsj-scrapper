@@ -4,6 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+import sys
+
 
 import pyexcel
 from time import sleep
@@ -15,17 +17,25 @@ def credentials():
         password  = data[1].split('=').strip()
     return username , password
 
+def login():
+    <LOGIN STEPS HERE>
 
-options = webdriver.ChromeOptions()
-options.add_argument('--user-data-dir=./user')
 
-driver = webdriver.Chrome("./chromedriver",options=options)
 
-driver.get("https://www.wsj.com/news/types/crypto?mod=breadcrumb")
-sleep(2)
+def main():
+    if sys.argv[1] == 'login':
+        login()
 
-article_list = []
-for i in range(1,4):
+    options = webdriver.ChromeOptions()
+    options.add_argument('--user-data-dir=./user')
+
+    driver = webdriver.Chrome("./chromedriver",options=options)
+
+    driver.get("https://www.wsj.com/news/types/crypto?mod=breadcrumb")
+    sleep(2)
+
+    article_list = []
+    for i in range(1,4):
 	
 	stories = driver.find_element('xpath',f"(//div[@id='latest-stories']//article[{i}]//a)[2]")
 	author = driver.find_element('xpath',f"(//div[@id='latest-stories']//article[{i}]//p)[2]")
@@ -48,9 +58,9 @@ for i in range(1,4):
 	print()
 
 
-add_para = ''
-for article in article_list:
-	driver.get(article)
+    add_para = ''
+    for article in article_list:
+        driver.get(article)
 	sleep(2)
 
 	paragraphs = driver.find_elements('xpath', "//section//p[@data-type='paragraph']")
