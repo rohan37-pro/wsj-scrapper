@@ -77,6 +77,14 @@ def main():
 	print()
 
 
+def login():
+	options = webdriver.ChromeOptions()
+	options.add_argument('--user-data-dir=./user')
+	driver = webdriver.Chrome("./chromedriver",options=options)
+	driver.get("https://accounts.wsj.com/login")
+	sleep(2)
 
-
+	login = driver.find_element('xpath', "(//input[@class='username'])[1]")
+	login.send_keys()
+	
 
