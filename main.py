@@ -8,6 +8,13 @@ from selenium.webdriver.common.keys import Keys
 import pyexcel
 from time import sleep
 
+def credentials():
+    with open('credentials.txt',r) as file:
+        data = file.readlines()
+        username = data[0].split('=').strip()
+        password  = data[1].split('=').strip()
+    return username , password
+
 
 options = webdriver.ChromeOptions()
 options.add_argument('--user-data-dir=./user')
