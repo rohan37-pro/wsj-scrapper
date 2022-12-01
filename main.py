@@ -134,7 +134,7 @@ def main():
 		for p in paragraphs:
 			add_para += p.text + '\n'
 
-		print(add_para)
+		#print(add_para)
 		all_data_of_articles[i].append(add_para)
 
 		add_para = f'''{head_line}\n\n\n{author}\n{date}\n\n\n\n\n{add_para}'''
@@ -155,6 +155,10 @@ def main():
 	for i in all_data_of_articles:
 		sheet.append(i)
 	wb.save('article.xlsx')
+	print()
+	print()
+	print("data has been scrapped successfully... :)")
+	print()
 
 
 if __name__ == "__main__":
@@ -173,6 +177,10 @@ if __name__ == "__main__":
 		print("file is not present")
 		os.mkdir(working_directory + "/articles")
 
+
+	login_or_not = input("are you logged in? (y/n) : ")
+	if login_or_not.lower() == 'n' or login_or_not.lower() == 'no' :
+		login()
 
 	main()
 
