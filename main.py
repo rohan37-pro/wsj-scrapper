@@ -1,3 +1,19 @@
+import subprocess
+try:
+	file = open("./requirements.txt", 'r')
+	reads = file.read()
+	file.close()
+	if reads !="":
+		try:
+			subprocess.run("pip install -r ./requirements.txt",shell=True)
+			with open("./requirements.txt", 'w') as file:
+				pass
+		except:
+			pass
+except:
+	pass
+
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -11,6 +27,9 @@ import sys
 import os
 import openpyxl
 from time import sleep
+
+
+
 
 working_directory = os.getcwd()
 
