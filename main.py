@@ -44,7 +44,7 @@ def credentials():
 
 def login():
 	options = webdriver.ChromeOptions()
-	options.add_argument('--user-data-dir=./user2')
+	options.add_argument('--user-data-dir=./user-cookie')
 	driver = webdriver.Chrome("./chromedriver",options=options)
 	driver.get("https://accounts.wsj.com/login")
 	sleep(3)
@@ -76,7 +76,7 @@ def main():
 		pass
 
 	options = webdriver.ChromeOptions()
-	options.add_argument('--user-data-dir=./user2')
+	options.add_argument('--user-data-dir=./user-cookie')
 
 	driver = webdriver.Chrome("./chromedriver",options=options)
 
