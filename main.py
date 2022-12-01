@@ -44,7 +44,7 @@ def credentials():
 
 def login():
 	options = webdriver.ChromeOptions()
-	options.add_argument('--user-data-dir=./user')
+	options.add_argument('--user-data-dir=./user2')
 	driver = webdriver.Chrome("./chromedriver",options=options)
 	driver.get("https://accounts.wsj.com/login")
 	sleep(3)
@@ -76,7 +76,7 @@ def main():
 		pass
 
 	options = webdriver.ChromeOptions()
-	options.add_argument('--user-data-dir=./user')
+	options.add_argument('--user-data-dir=./user2')
 
 	driver = webdriver.Chrome("./chromedriver",options=options)
 
@@ -180,8 +180,11 @@ if __name__ == "__main__":
 
 	login_or_not = input("are you logged in? (y/n) : ")
 	if login_or_not.lower() == 'n' or login_or_not.lower() == 'no' :
-		login()
-
+		try:
+			login()
+		except:
+			pass
+	sleep(2)
 	main()
 
 	
